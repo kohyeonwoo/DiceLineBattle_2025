@@ -6,81 +6,89 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
 
-    private int money;
-    public int currentMoney;
+    public List<GameObject> unit1Side = new List<GameObject>();
 
-    public int winCount;
+    public List<GameObject> unit2Side = new List<GameObject>();
 
-    public TextMeshProUGUI moneyText;
-    public TextMeshProUGUI currentMoneyText;
+    public TextMeshProUGUI unitCount1Text;
+
+    public TextMeshProUGUI unitCount2Text;
+
+    public Transform unit1SpawnLocation;
+
+    public Transform unit2SpawnLocation;
+
+    public int unitCount1;
+    
+    public int unitCount2;
+
+    private GameObject spawnUnit;
 
     private void Start()
     {
-        winCount = 0;
+        unitCount1 = 0;
+
+        unitCount2 = 0;
     }
 
     private void Update()
     {
-        moneyText.text = money.ToString();
-        currentMoneyText.text = currentMoney.ToString();
+        unitCount1Text.text = unitCount1.ToString();
+
+        unitCount2Text.text = unitCount2.ToString();
     }
 
-    public void PluseMoney()
+    public void PlusUnitCount1()
     {
-        money += 1000;
-        currentMoney -= 1000;
-    }
-
-    public void MinusMoney()
-    {
-        if(money <= 0)
+        if(unitCount1 >= 100)
         {
             return;
         }
 
-        money -= 1000;
-        currentMoney += 1000;
+        unitCount1++;
+
+        SpawnUnit();
+    }
+
+    public void MinusUnitCount1()
+    {
+
+        if(unitCount1 <= 0)
+        {
+            return;
+        }
+
+         unitCount1--;
+
+    }
+
+    public void PlusUnitCount2()
+    {
+        if (unitCount2 >= 100)
+        {
+            return;
+        }
+
+        unitCount2++;
+    }
+
+    public void MinusUnitCount2()
+    {
+
+        if (unitCount2 <= 0)
+        {
+            return;
+        }
+
+        unitCount2--;
+
     }
 
     private void SpawnUnit()
     {
-        switch (money)
-        {
+        float distance = 1.5f;
 
-            case 1000:
-                break;
-
-            case 2000:
-                break;
-
-            case 3000:
-                break;
-
-            case 4000:
-                break;
-
-            case 5000:
-                break;
-
-            case 6000:
-                break;
-
-            case 7000:
-                break;
-
-            case 8000:
-                break;
-
-            case 9000:
-                break;
-
-            case 10000:
-                break;
-
-            default:
-                break;
-        }
-
+        Vector3 offset = new Vector3(0.0f, 0.0f, distance);
     }
 
 }
